@@ -23,6 +23,11 @@ export default function EntryForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (formData.pin.replace(/\D/g, '').length !== 16) {
+            alert('PIN must be exactly 16 digits.');
+            return;
+        }
+        alert(`Thank you, ${formData.firstName}! Your submission has been received.`);
         console.log('Form submitted: ', formData);
     };
 
@@ -30,7 +35,26 @@ export default function EntryForm() {
         paddingLeft: '28px'
     };
 
-    
+    const formatPin = (value) => {
+        const digits = value.replace(/\D/g, '');
+        const limited = digits.slice(0, 16);
+        
+        let formatted = '';
+        for (let i = 0; i < limited.length; i++) {
+        if (i > 0 && i % 4 === 0) {
+            formatted += '-';
+        }
+        formatted += limited[i];
+        }
+        
+        return formatted;
+    };
+
+    const handlePinChange = (e) => {
+        const cleaned = e.target.value.replace(/\D/g, '');
+        const formatted = formatPin(cleaned);
+        setFormData(prev => ({ ...prev, pin: formatted }));
+    };
 
 
     return (
@@ -92,12 +116,13 @@ export default function EntryForm() {
                             id="input-field"
                             name="airFryerCost"
                             placeholder="0.00"
-                            defaultValue={10.00}
                             decimalsLimit={2}
                             required
                             style={currencyInputStyle}
-                            onValueChange={(value, name, values) => console.log(value, name, values)}
-                            />
+                            onValueChange={(value) => {
+                                setFormData(prev => ({ ...prev, airFryerCost: value }));
+                            }}                            
+                        />
                     </div>
                 </div>
 
@@ -108,7 +133,7 @@ export default function EntryForm() {
                         name="pin"
                         placeholder="XXXX-XXXX-XXXX-XXXX"
                         value={formData.pin}
-                        onChange={handleChange}
+                        onChange={handlePinChange}
                         required
                         className='input-field' />
                 </div>
