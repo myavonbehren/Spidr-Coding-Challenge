@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/EntryForm.css'
 
 export default function EntryForm() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        airFryerCost: '',
+        pin: ''
+    });
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted');
     };
+
+
 
     return (
       <div className='form-page'>
