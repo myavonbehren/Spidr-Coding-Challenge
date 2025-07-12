@@ -13,16 +13,17 @@ export default function EntryForm() {
             <h1>Interest Form</h1>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
-                    <label>First Name</label>
+                    <label className='label'>First Name</label>
                     <input 
                         type="text" 
                         name="firstName" 
-                        placeholder="First Name" 
+                        placeholder="First Name"
+                        value={formData.firstName}
                         required 
                         className='input-field' />
                 </div>
                 <div className='form-group'>
-                    <label>Last Name</label>
+                    <label className='label'>Last Name</label>
                     <input 
                         type="text" 
                         name="lastName" 
@@ -31,7 +32,7 @@ export default function EntryForm() {
                         className='input-field' />
                 </div>
                 <div className='form-group'>
-                    <label>Phone Number</label>
+                    <label className='label'>Phone Number</label>
                     <input
                         type="tel" 
                         name="phone" 
@@ -40,7 +41,7 @@ export default function EntryForm() {
                         className='input-field' />
                 </div>
                 <div className='form-group'>
-                    <label>Email Address</label>
+                    <label className='label'>Email Address</label>
                     <input 
                         type="email"
                         name="email"
@@ -50,7 +51,7 @@ export default function EntryForm() {
                 </div>
 
                 <div className='form-group'>
-                    <label>Guess the Air Fryer's Cost</label>
+                    <label className='label'>Guess the Air Fryer's Cost</label>
                     <input 
                         type="text"
                         name="airFryerCost"
@@ -60,7 +61,7 @@ export default function EntryForm() {
                 </div>
 
                 <div className='form-group'>
-                    <label>16-Digit PIN</label>
+                    <label className='label'>16-Digit PIN</label>
                     <input
                         type="password"
                         name="pin"
