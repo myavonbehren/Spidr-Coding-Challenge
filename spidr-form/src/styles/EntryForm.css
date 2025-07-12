@@ -51,3 +51,11 @@
     color: #fff;
     pointer-events: none;
 }
+
+.pin-note {
+  font-size: 12px;
+  color: #fff;
+  margin-top: -12px;
+  margin-bottom: 12px;
+  text-align: left;
+}

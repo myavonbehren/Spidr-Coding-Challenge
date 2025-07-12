@@ -137,6 +137,7 @@ export default function EntryForm() {
                         required
                         className='input-field' />
                 </div>
+                <p className='pin-note'>Dashes will be added automatically as you type.</p>
 
                 <button 
                     type="submit" 
