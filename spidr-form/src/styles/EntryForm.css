@@ -1,0 +1,13 @@
+.form-page {
+    min-height: '100vh';
+    background-color: '#f9f9f9';
+    padding: 48px 16px;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #56ACBD;
+  border-radius: 0px;
+  padding: 24px;
+}
