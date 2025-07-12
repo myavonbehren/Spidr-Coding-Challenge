@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/EntryForm.css'
 
 export default function EntryForm() {
     const handleSubmit = (e) => {
@@ -9,8 +10,7 @@ export default function EntryForm() {
     return (
       <div className='form-page'>
         <div className='form-container'>
-            <h1>Spidr Air Fryer</h1>
-            <h2>Interest Form</h2>
+            <h1>Interest Form</h1>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <label>First Name</label>
