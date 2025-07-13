@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import '../styles/EntryForm.css'
 import CurrencyInput from 'react-currency-input-field';
-
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function EntryForm() {
+    const [showPin, setShowPin] = useState(false);
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -33,6 +35,25 @@ export default function EntryForm() {
 
     const currencyInputStyle = {
         paddingLeft: '28px'
+    };
+
+    const formatPhoneNumber = (value) => {
+        const digitsOnly = value.replace(/\D/g, '');
+        
+        const limitedDigits = digitsOnly.slice(0, 10);
+        
+        if (limitedDigits.length === 0) return '';
+        if (limitedDigits.length <= 3) return `(${limitedDigits}`;
+        if (limitedDigits.length <= 6) return `(${limitedDigits.slice(0, 3)}) ${limitedDigits.slice(3)}`;
+        return `(${limitedDigits.slice(0, 3)}) ${limitedDigits.slice(3, 6)}-${limitedDigits.slice(6)}`;
+    };
+
+    const handlePhoneChange = (e) => {
+        const formattedValue = formatPhoneNumber(e.target.value);
+        setFormData(prev => ({
+            ...prev,
+            phone: formattedValue
+        }));
     };
 
     const formatPin = (value) => {
@@ -93,7 +114,7 @@ export default function EntryForm() {
                         name="phone" 
                         placeholder="(123) 456-7890"
                         value={formData.phone}
-                        onChange={handleChange}
+                        onChange={handlePhoneChange}
                         required 
                         className='input-field' />
                 </div>
@@ -130,15 +151,27 @@ export default function EntryForm() {
 
                 <div className='form-group'>
                     <label className='label'>16-Digit PIN</label>
+                        <div className="pin-input-container">
                     <input
-                        type="password"
+                        type={showPin ? "text" : "password"}
                         name="pin"
                         placeholder="9999-8888-7777-6666"
                         value={formData.pin}
                         onChange={handlePinChange}
                         required
-                        className='input-field' />
+                        className='input-field with-toggle'
+                    />
+                    <button
+                        type="button"
+                        onClick={() => setShowPin(!showPin)}
+                        className="pin-toggle-button"
+                        aria-label={showPin ? "Hide PIN" : "Show PIN"}
+                    >
+                    {showPin ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                    </div>
                 </div>
+
                 <p className='pin-note'>Dashes will be added automatically as you type.</p>
 
                 <button 
