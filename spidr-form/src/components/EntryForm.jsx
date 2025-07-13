@@ -62,34 +62,36 @@ export default function EntryForm() {
         <div className='form-container'>
             <h1>Interest Form</h1>
             <form onSubmit={handleSubmit}>
-                <div className='form-group'>
+                <div className='form-row'>
+                <div className='form-group form-group-half'>
                     <label className='label'>First Name</label>
                     <input 
                         type="text" 
                         name="firstName" 
-                        placeholder="First Name"
+                        placeholder="John"
                         value={formData.firstName}
                         onChange={handleChange}
                         required 
                         className='input-field' />
                 </div>
-                <div className='form-group'>
+                <div className='form-group form-group-half'>
                     <label className='label'>Last Name</label>
                     <input 
                         type="text" 
                         name="lastName" 
-                        placeholder="Last Name" 
+                        placeholder="Doe" 
                         value={formData.lastName}
                         onChange={handleChange}
                         required 
                         className='input-field' />
+                </div>
                 </div>
                 <div className='form-group'>
                     <label className='label'>Phone Number</label>
                     <input
                         type="tel" 
                         name="phone" 
-                        placeholder="Phone Number"
+                        placeholder="(123) 456-7890"
                         value={formData.phone}
                         onChange={handleChange}
                         required 
@@ -100,7 +102,7 @@ export default function EntryForm() {
                     <input 
                         type="email"
                         name="email"
-                        placeholder="Email Address"
+                        placeholder="example@mail.com"
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -131,7 +133,7 @@ export default function EntryForm() {
                     <input
                         type="password"
                         name="pin"
-                        placeholder="XXXX-XXXX-XXXX-XXXX"
+                        placeholder="9999-8888-7777-6666"
                         value={formData.pin}
                         onChange={handlePinChange}
                         required
